@@ -21,7 +21,7 @@ public class DemoApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(BaseUserRepo baseUserRepo, ProUserRepo proUserRepo, BaseMapRepo baseMapRepo, ProMapRepo proMapRepo) {
+	CommandLineRunner run(BaseUserRepo baseUserRepo, ProUserRepo proUserRepo) {
 		return args -> {
 
 			//base map
@@ -45,18 +45,22 @@ public class DemoApplication {
 			proUserRepo.save(proUser);
 
 			//getAllShow
+			System.out.println("select pro user : proUserRepo.findAll()");
 			for (ProUser proUser1:proUserRepo.findAll()) {
-				System.out.println(proUser1.getUserId());
-				System.out.println(proUser1.getUserName());
-				System.out.println(proUser1.getProUserProp());
-				System.out.println(proUser1.getMap().getMapName());
-				System.out.println(proUser1.getMap().getProMapProp());
+				System.out.print(proUser1.getUserId() + " ");
+				System.out.print(proUser1.getUserName()+ " ");
+				System.out.print(proUser1.getProUserProp()+ " ");
+				System.out.print(proUser1.getMap().getMapName()+ " ");
+				System.out.print(proUser1.getMap().getProMapProp()+ " \n");
 			}
 
+			System.out.println("select base user : baseUserRepo.findAll()");
 			for (BaseUser baseUser1:baseUserRepo.findAll()) {
-				System.out.println(baseUser1.getUserId());
-				System.out.println(baseUser1.getUserName());
-				System.out.println(baseUser1.getMap().getMapName());
+				System.out.print(baseUser1.getClass() + " ");
+				System.out.print(baseUser1.getUserId() + " ");
+				System.out.print(baseUser1.getUserName() + " ");
+				System.out.print(baseUser1.getMap().getMapName()+ " ");
+				System.out.print(baseUser1.getMap().getMapName()+ " \n");
 			}
 
 
